@@ -23,7 +23,10 @@ def addcharacter():
 @character.route('/character', methods=['GET'])
 def characterlist():
     herolist = [hero.to_dict() for hero in Charactor.query.all()]
-    favlist = [fav.character_id for fav in FavoriteCharactor.query.filter(FavoriteCharactor.user_id==current_user.id).all()]
+    if current_user.is_authenticated:
+        favlist = [fav.character_id for fav in FavoriteCharactor.query.filter(FavoriteCharactor.user_id==current_user.id).all()]
+    else:
+        favlist = None
     return render_template('character.html', herolist=herolist, favlist=favlist)
 
 @character.route('/character/add/<character_id>')
