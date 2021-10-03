@@ -1,0 +1,35 @@
+{% extends 'components/layout.html' %}
+
+{% block title %}Add Character{% endblock title %}
+
+{% block content %}
+<div class="row-fluid p-2" style="margin-top:2rem;">
+    <div class="col-lg-6 mx-auto">
+        <h2>Add New Character</h2>
+        <br>
+        <form method="POST">
+            {{form.hidden_tag()}}
+            <div class="form-group">
+                <fieldset id="name-field">
+                    {{form.name.label}}
+                    {{form.name(class="form-control", placeholder="Name of the character")}}
+                </fieldset>
+                <fieldset id="date-field">
+                    {{form.description.label}}
+                    {{form.description(class="form-control", placeholder="Description of the character")}}
+                </fieldset>
+                <fieldset id="comics-field">
+                    {{form.comics.label}}
+                    {{form.comics(class="form-control", placeholder="Comis the character appeared in")}}
+                </fieldset>
+                <fieldset id="superpower-field">
+                    {{form.superpower.label}}
+                    {{form.superpower(class="form-control", placeholder="Super Power the character has")}}
+                </fieldset>
+                <br>
+                {{ form.submit_button(class='btn btn-info btn-block')}}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

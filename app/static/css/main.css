@@ -1,0 +1,19 @@
+html{
+    padding-bottom: 5%;
+}
+.page-holder {
+    min-height: 100vh;
+}
+  
+.bg-cover {
+    background-size: cover !important;
+}
+
+.custom {
+    padding-top: 10rem;
+    height: calc(100% - 73px);
+}
+
+#loginform {
+    padding-left: 3rem;
+}

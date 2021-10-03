@@ -1,0 +1,33 @@
+{% extends 'components/layout.html' %}
+
+{% block title %}Characters{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+    {% for hero in herolist %}
+    <div class="col-sm col-xs-12">
+        <div class="card" style="width:300px; margin-top:20px;">
+            <img class="card-img-top" src="../../static/images/spiderman.png" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{hero['name']}}</h4>
+                <p class="card-text">{{hero['description']}}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Super Power: {{hero['superpower']}}</li>
+                    <li class="list-group-item">Appearance Comics: {{hero['comic']}}</li>
+                </ul>
+                {% if current_user.is_authenticated %}
+                <br>
+                    {% if hero['id'] in favlist %}
+                    <a href="#" class="btn btn-primary disabled">In my character list</a>
+                    {% else %}
+                    <a href="{{url_for('character.addfavorite', character_id=hero['id'])}}" class="btn btn-primary">Add to my character</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

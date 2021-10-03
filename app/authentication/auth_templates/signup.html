@@ -1,0 +1,54 @@
+{% extends 'components/layout.html' %}
+
+{% block title %} Singup {% endblock title %}
+
+{% block content %}
+<div class="container-fluid" style="margin-top:5rem;">
+    <div class="row-fluid p-2">
+        <div class="col-lg-4 mx-auto">
+            <h2>Get started for free</h2>
+            <br>
+            <form method="POST">
+                {{form.hidden_tag()}}
+                <div class="form-group">
+                    <fieldset id="name-field">
+                        {{ form.name.label }}
+                        {{ form.name(class="form-control", placeholder="Name...")}}
+                    </fieldset>
+                    <fieldset id="email-field">
+                        {{ form.email.label }}
+                        {{ form.email(class="form-control", placeholder="Email...")}}
+                    </fieldset>
+                    <fieldset id="password-field">
+                        {{ form.password.label }}
+                        {{ form.password(class="form-control", placeholder="Password...")}}
+                    </fieldset>
+                    <fieldset id="confirm-password-field">
+                        {{ form.confirm_password.label }}
+                        {{ form.confirm_password(class="form-control", placeholder="Enter Password Again...")}}
+                    </fieldset>
+                    <br><br>
+                    <!--Summit button-->
+                    {{form.submit_button(class="btn btn-secondary btn-lg")}}
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row-fluid p-2">
+        <div class="col-lg-4 mx-auto">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert {{category}} alert-dismissible fade show" role="alert">
+                            <strong>{{message}}</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'components/layout.html' %}
+
+{% block title %}My Favorite Characters{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+    {% for hero in herolist %}
+    <div class="col-sm col-xs-12 justify-align-right">
+        <div class="card" style="width:300px; margin-top:20px;">
+            <img class="card-img-top" src="../../static/images/spiderman.png" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">{{hero['name']}}</h4>
+                <p class="card-text">{{hero['description']}}</p>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Super Power: {{hero['superpower']}}</li>
+                    <li class="list-group-item">Appearance Comics: {{hero['comic']}}</li>
+                </ul>
+                <br>
+                <a href="{{url_for('character.deletefavorite', character_id=hero['id'])}}" class="btn btn-primary">Remove from my character</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}
