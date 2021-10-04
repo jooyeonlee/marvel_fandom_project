@@ -24,6 +24,8 @@ character_id: integer, required
 - [POST] https://marvel-fandom.herokuapp.com/api/addcharacters
 - This can only be done by authenticated user
 - Description: Add a new character to the database
+- Header: 
+ {'x-access-token': 'your token string', 'Content-Type': 'application/json'}
 - Body Parameter: application/json
   {
       "name": "Character Name", (required)
@@ -38,6 +40,8 @@ character_id: integer, required
 - Description: Update a character that matches with the character id to database
 - Path Parameters:
 character_id: integer, required
+- Header: 
+ {'x-access-token': 'your token string', 'Content-Type': 'application/json'}
 - Body Parameter: application/json
   {
       "name": "Character Name",
@@ -52,6 +56,8 @@ character_id: integer, required
 - Description: Returns all characters in favorite character list of a user that matches with the user id
 - Path Parameters:
   user_id: string, required
+- Header: 
+ {'x-access-token': 'your token string', 'Content-Type': 'application/json'}
 - Responses: application/json
 
 7. Add a character to a user's favorite character
@@ -61,6 +67,8 @@ character_id: integer, required
 - Path Parameters:
   user_id: string, required
   character_id: integer, required
+- Header: 
+ {'x-access-token': 'your token string', 'Content-Type': 'application/json'}
 
 8. Remove a chracter from a user's favorite character
 - [DELETE] https://marvel-fandom.herokuapp.com/api/favcharacter/{user_id}/{character_id}
@@ -69,3 +77,5 @@ character_id: integer, required
 - Path Parameters:
   user_id: string, required
   character_id: integer, required
+- Header: 
+ {'x-access-token': 'your token string', 'Content-Type': 'application/json'}
